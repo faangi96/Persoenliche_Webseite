@@ -1,2 +1,2 @@
-# Pers-nliche_Webseite
+# Persönliche_Webseite
 Persönliche Webseite im Rahmen eines Portfolios
