@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="de">
+<link rel="stylesheet" href="../css/style.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<script src="..\js\javascript_main.js"></script>
+<title>PHP - Angirillo Fabio</title>
+</html>
+
+<!-- header-Section-->
+<header class="header">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <a href="main.html">
+            <img src="../images/title_beta.jpg" alt="Titelbild" width="460" height="250" link="main.html" ">
+        </a>  
+
+        <!--Navigationsleiste-->
+        <nav class="ul">
+            <ul>
+                <li><a href="main.html">Start</a></li>
+                <li><a href="kenntnisse.html">Kenntnisse</a></li>
+                <li><a href="projekte.html">Projekte</a></li>
+                <li><a href="bachelorarbeit.html">Bachelorarbeit - KI in der Medienlandschaft</a></li>
+                <li><a href="kontakt.html">Kontakt</a></li>
+            </ul>
+        </nav>
+</header>
+
+<!-- Seiteninhalt-->
+<<body class=" container">
+    <h2>Users laden</h2>
+
+    <button onclick="loadUsers()">
+        Users anzeigen,
+    </button>
+
+    <pre id="output">
+    Noch keine Daten geladen
+    </pre>
+
+    <script>
+a       sync function loadUsers() {
+
+        const response = await fetch('../api/sql_database_users.php');
+
+        const data = await response.json();
+
+         document.getElementById('output').textContent =
+            JSON.stringify(data, null, 2);
+        }
+    </script>
+</body>
+   
+<!-- Footer-Section-->
+ 
+<footer class="footer">
+  <div class="container">
+    <p class="footer-text">© 2026 Angirillo Fabio | B.Sc. Medieninformatik</p>
+
+    <ul class="ul">
+      <li><a href="impressum.html">Impressum</a></li>
+      <li><a href="datenschutz.html">Datenschutz</a></li>
+    </ul>
+  </div>
+</footer>
+</html>
