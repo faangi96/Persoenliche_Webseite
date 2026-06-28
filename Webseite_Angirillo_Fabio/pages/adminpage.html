@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="de">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/grid.css">
+<link rel="stylesheet" href="../css/adminlogin.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<script src="..\js\javascript_main.js"></script>
+<title> !!!!!!! - Angirillo Fabio</title>
+</html>
+
+<!-- header-Section-->
+<header class="header">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <a href="main.html">
+            <img src="../images/title_beta.jpg" alt="Titelbild" width="460" height="250" link="main.html" ">
+        </a>  
+
+        <!--Navigationsleiste-->
+        <nav class="ul">
+            <ul>
+                <li><a href="main.html">Start</a></li>
+                <li><a href="kenntnisse.html">Kenntnisse</a></li>
+                <li><a href="projekte.html">Projekte</a></li>
+                <li><a href="bachelorarbeit.html">Bachelorarbeit - KI in der Medienlandschaft</a></li>
+                <li><a href="kontakt.html">Kontakt</a></li>
+                <li style="float:right;" class="login-menu"><a href="#" onclick="toggleLogin()">Admin-Login</a></li>
+                      <div id="loginDropdown" class="login-dropdown">
+                          <form action="../api/adminlogin.php" method="post">
+                              <label for="Admin-Username">Admin-Benutzername</label>
+                              <input type="text" id="Admin-Username-Textfeld" name="Admin-Username-Textfeld" required>
+                              <label for="Admin-password">Passwort</label>
+                              <input type="password" id="Admin-Password-Textfeld" name="Admin-Password-Textfeld" required>
+                              <button type="submit">Anmelden</button>
+                          </form>
+                       </div>
+                </li>
+            </ul>
+        </nav>
+</header>
+
+<!-- Seiteninhalt-->
+
+<body class=" container">
+   <main>
+   Anmeldung erfolgreich! Sie haben Zugriff auf die Admin-Seite.
+   </main>
+</body>
+
+<!-- Footer-Section-->
+ 
+<footer class="footer">
+  <div class="container">
+    <p class="footer-text">© 2026 Angirillo Fabio | B.Sc. Medieninformatik</p>
+
+    <ul class="ul">
+      <li><a href="impressum.html">Impressum</a></li>
+      <li><a href="datenschutz.html">Datenschutz</a></li>
+    </ul>
+  </div>
+</footer>
+</html>
