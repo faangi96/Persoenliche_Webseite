@@ -40,11 +40,11 @@ document.addEventListener("keyup", (event) => {
 
 
 /* SFX */
-const hit_Sound = new Audio("../sfx/tenissmash.mp3");
-const player_scoreUp_Sound = new Audio("../sfx/score_up.mp3");
-const opponent_scoreUp_Sound = new Audio("../sfx/opponent_scoreUp.mp3");
-const victory_Sound = new Audio("../sfx/victory.mp3");
-const gameOver_Sound = new Audio("../sfx/gameover.mp3");
+const hit_Sound = new Audio("sfx/tenissmash.mp3");
+const player_scoreUp_Sound = new Audio("sfx/score_up.mp3");
+const opponent_scoreUp_Sound = new Audio("sfx/opponent_scoreUp.mp3");
+const victory_Sound = new Audio("sfx/victory.mp3");
+const gameOver_Sound = new Audio("sfx/gameover.mp3");
 
 function playSound(sound, time = 0) {
     sound.currentTime = time; 
