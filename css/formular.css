@@ -1,0 +1,30 @@
+#kontakt {
+
+}
+
+#kontakt input,
+#kontakt textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 16px;
+  margin-top: 5px;
+}
+
+#kontakt textarea {
+  resize: vertical;
+}
+
+#kontakt button {
+  background-color: #333;
+  color: white;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+#kontakt button:hover {
+  background-color: #555;
+}
