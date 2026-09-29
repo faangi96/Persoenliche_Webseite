@@ -16,8 +16,8 @@ Verwendete Programmiersprachen:
 
 Geplante-Erweiterungen (To-Do):
 
-    -HTML-, CSS- und JavaScript-Code aufräumen und optimieren,
-    -Admin-Seite erstellen,
+    -HTML-, CSS- und JavaScript-Code aufräumen und optimieren
+    -Admin-Seite erstellen
     -Symbole und Grafiken überarbeiten
 
 
