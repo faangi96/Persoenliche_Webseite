@@ -1,6 +1,10 @@
 const canvas = document.getElementById("Ping-Pong");
 const ctx = canvas.getContext("2d");
 
+/* GameLoop */
+
+let gameloop;
+
 /* Ball */
 let ballX = 300;
 let ballY = 300;
@@ -14,7 +18,9 @@ let opponentY = 250;
 
 
 /* Computer */
+let opponentError = 25; // BEHOBEN: Mit Standardwert (Mitte des Schlägers) initialisiert
 let opponentWillHit = true;
+
 
 /* Punkte und Gewinnbedingung */
 let scoreLeft = 0;
@@ -23,21 +29,15 @@ const win_score = 7; // Anzahl Punkte zum Gewinnen
 let gameOver = false;
 let winnerText = "";
 
+/* Sound */
+let endSound;
+
 /* Pause */
 let paused = false;
 
 /* Steuerung */
 
 const keys = {};
-
-document.addEventListener("keydown", (event) => {
-    keys[event.key] = true;
-});
-
-document.addEventListener("keyup", (event) => {
-    keys[event.key] = false;
-});
-
 
 /* SFX */
 const hit_Sound = new Audio("sfx/tenissmash.mp3");
@@ -93,6 +93,7 @@ function resetBall() {
 }
 
 /* Überprüft, ob jemand gewonnen hat */
+
 function checkWinner() {
 
     if (scoreLeft >= win_score) {
@@ -113,7 +114,7 @@ function resetGame() {
     ballX = 300;
     ballY = 300;
     speedX = 4;
-    peedY = 3;
+    speedY = 3;
     playerY = 250;
     opponentY = 250;
     opponentWillHit = true;
@@ -184,8 +185,33 @@ function run_game() {
         ballY >= playerY &&
         ballY <= playerY + 100
     ) {
+       // Richtung merken
+        let currentDirectionY = Math.sign(speedY);
+        if (currentDirectionY === 0) currentDirectionY = 1; // Fallback, falls speedY genau 0 war
+
+        // Treffpunkt auf dem Schläger berechnen
+        let hitPoint = ballY - playerY; 
+        
+        // Abstand zur Mittellinie (50)
+        let distanceFromCenter = Math.abs(50 - hitPoint);
+
+        let angleSpeed;
+
+        // Zonen-Abfrage von der Mitte nach außen:
+        if (distanceFromCenter <= 20) {
+            angleSpeed = 2; // Leichte Winkelsteigerung
+        } else if (distanceFromCenter <= 40) {
+            angleSpeed = 4.5; // Angemessene Winkelsteigerung
+        } else {
+            angleSpeed = 8; // Starke Winkelsteigerung
+        }
+
+        // Richtung beibehalten und neuen Winkel setzen
+        speedY = angleSpeed * currentDirectionY;
+
+        // Ball Abprall nach rechts und leichte Beschleunigung
         speedX *= -1;
-        speedX +=1;
+        speedX += 0.5; 
         playSound(hit_Sound);
     }
 
@@ -195,9 +221,33 @@ function run_game() {
         ballY >= opponentY &&
         ballY <= opponentY + 100
     ) {
+       // Richtung merken
+        let currentDirectionY = Math.sign(speedY);
+        if (currentDirectionY === 0) currentDirectionY = 1;
+
+        // Treffpunkt auf dem gegnerischen Schläger
+        let hitPoint = ballY - opponentY;
+        
+        // Abstand zur Mittellinie (50)
+        let distanceFromCenter = Math.abs(50 - hitPoint);
+
+        let angleSpeed;
+
+        // Zonen Abfrage von der Mitte nach außen:
+        if (distanceFromCenter <= 20) {
+            angleSpeed = 2; // Leichte Winkelsteigerung
+        } else if (distanceFromCenter <= 40) {
+            angleSpeed = 4.5; // Angemessene Winkelsteigerung
+        } else {
+            angleSpeed = 8; // Starke Winkelsteigerung
+        }
+
+        // Richtung beibehalten und neuen Winkel setzen
+        speedY = angleSpeed * currentDirectionY;
+
+        // Ball Abprall nach links und leichte Beschleunigung
         speedX *= -1;
         playSound(hit_Sound);
-        opponentWillHit = Math.random() < 0.37;
     }
 
     /* Begrenzung Spieler */
@@ -233,24 +283,29 @@ function run_game() {
         resetBall();
     }
 
-    /* Computer-Bewegung */
-    let targetY;
+    /* Computer-KI */
+    
+    let desiredTarget = ballY - opponentError;
 
-    if (opponentWillHit) {
-        let error = Math.random() * 80 - 40; // -40 bis +40 Pixel
+    // Verhindert, dass das Ziel außerhalb des Spielfelds berechnet wird
+    if (desiredTarget < 0) desiredTarget = 0;
+    if (desiredTarget > 500) desiredTarget = 500;
 
-        targetY = ballY + error;
+    // Berechne den direkten Abstand zum Ziel
+    let distance = Math.abs(opponentY - desiredTarget);
+    let currentSpeed = 7; 
+
+    if (distance < currentSpeed) {
+        opponentY = desiredTarget;
     } else {
-        targetY = ballY + 50;
+        if (opponentY < desiredTarget) {
+            opponentY += currentSpeed;
+        }
+        if (opponentY > desiredTarget) {
+            opponentY -= currentSpeed;
+        }
     }
 
-    if (opponentY + 50 < targetY) {
-        opponentY += 5;
-    }
-
-    if (opponentY + 50 > targetY) {
-        opponentY -= 5;
-    }
 
     /* Punktestand */
     ctx.font = "30px pixel";
@@ -272,3 +327,4 @@ function run_game() {
 
 /* Startbild */
 run_game();
+
