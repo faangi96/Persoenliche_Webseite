@@ -9,13 +9,19 @@ Ziel des Projekts ist es, die im Studium erlernten Kenntnisse praktisch anzuwend
 Die Webseite befindet sich derzeit noch in der Entwicklung und wird kontinuierlich erweitert und verbessert.
 
 Verwendete Programmiersprachen:
+
   -HTML & CSS
+  
   -PHP
+  
   -JavaScript (Pong)
 
 Geplante-Erweiterungen (To-Do):
+
   -HTML-, CSS- und JavaScript-Code aufräumen und optimieren,
+  
   -Admin-Seite erstellen,
+  
   -Symbole und Grafiken überarbeiten
 
 
