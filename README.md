@@ -10,19 +10,15 @@ Die Webseite befindet sich derzeit noch in der Entwicklung und wird kontinuierli
 
 Verwendete Programmiersprachen:
 
-  -HTML & CSS
-  
-  -PHP
-  
-  -JavaScript (Pong)
+    -HTML & CSS
+    -PHP
+    -JavaScript (Pong)
 
 Geplante-Erweiterungen (To-Do):
 
-  -HTML-, CSS- und JavaScript-Code aufräumen und optimieren,
-  
-  -Admin-Seite erstellen,
-  
-  -Symbole und Grafiken überarbeiten
+    -HTML-, CSS- und JavaScript-Code aufräumen und optimieren,
+    -Admin-Seite erstellen,
+    -Symbole und Grafiken überarbeiten
 
 
 
