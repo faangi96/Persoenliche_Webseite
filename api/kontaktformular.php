@@ -1,7 +1,5 @@
 <?php
 
-/* Speicherung auf einer SQL-Datenbank */
-
 /* Verbindungsaufbau zur Datenbank*/
 $host= "localhost";
 $user= "root";
