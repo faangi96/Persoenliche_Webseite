@@ -1,9 +1,5 @@
 <?php
 
-
-/* Login-Prozess für die Admin-Oberfläche */
-
-
 /* Verbindungsaufbau zur Datenbank*/
 $host= "localhost";
 $user= "root";
